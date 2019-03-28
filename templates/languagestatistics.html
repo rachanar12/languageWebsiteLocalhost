@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+{% block head %}
+<title>World Language Statistics</title>
+{% endblock head %}
+{% block content %}
+	<div class="container">
+		<div class="row row-no-margin">
+			<div class="col-md-6">
+				<h3>Interesting statistics about languages</h3>
+				<div class="col-md-12">
+				<div class="row">
+					<div class="box col-md-4">
+						<span class="figure-label"><p> number of living languages: <br><br> 6912 </p></span>
+						<img class="figure" src="{{ url_for("static",filename="images/languages-signpost.jpg")}}">
+					</div>
+					<div class="box col-md-4">
+						<span class="figure-label"><p> number of those languages nearly extinct: <br><br> 516 </p></span>
+						<img class="figure" src="{{ url_for("static",filename="images/dead-language.jpg")}}">
+					</div>
+					<div class="box col-md-4">
+						<span class="figure-label"><p> Most spoken language: <br><br> Chinese </p></span>
+						<img class="figure" src="{{ url_for("static",filename="images/chinese.jpg")}}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="box col-md-4">
+						<span class="figure-label"><p> Language spoken by greatest number of non-natives: <br><br> English </p></span>
+						<img class="figure" src="{{ url_for("static",filename="images/english.png")}}">
+					</div>
+					<div class="box col-md-4">
+						<span class="figure-label"><p> Country with most spoken languages: <br><br> Papa New Guinea </p></span>
+						<img class="figure" src="{{ url_for("static",filename="images/papa-new-guinea.jpg")}}">
+					</div>
+					<div class="box col-md-4">
+						<span class="figure-label"><p>languages have been around since: <br><br> 100,000 BC </p></span>
+						<img class="figure" src="{{ url_for("static",filename="images/vintage-calendar.jpg")}}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="box col-md-4">
+						<span class="figure-label"><p> First language ever written: <br><br> Egyptian </p></span>
+						<img class="figure" src="{{ url_for("static",filename="images/egypt.jpg")}}">
+					</div>
+					<div class="box col-md-4">
+						<span class="figure-label"><p> language with fewest words: <br><br> taki taki spoken in Suriname </p></span>
+						<img class="figure" src="{{ url_for("static",filename="images/suriname.jpg")}}">
+					</div>
+					<div class="box col-md-4">
+						<span class="figure-label"><p> language with largest alphabet: <br><br> Khmer spoken in Cambodia </p></span>
+						<img class="figure" src="{{ url_for("static",filename="images/cambodia.jpg")}}">
+					</div>
+				</div>
+				<div class="row">
+					<div class="box col-md-4">
+						<span class="figure-label"><p> Language with zero irregular verbs: <br><br> Esperanto </p></span>
+						<img class="figure" src="{{ url_for("static",filename="images/esperanto.jpg")}}">
+					</div>
+					<div class="box col-md-4">
+						<span class="figure-label"><p> Language that won most Oscars: <br><br> Italian (oscar for best foreign film)</p></span>
+						<img class="figure" src="{{ url_for("static",filename="images/oscars-italian.jpg")}}">
+					</div>
+					<div class="box col-md-4">
+						<span class="figure-label"><p> Most translated document: <br><br> Universal Declaration of Human Rights translated into 321 languages </p></span>
+						<img class="figure" src="{{ url_for("static",filename="images/human-rights.jpg")}}">
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form">
+					<h3> section for top 5 words </h3>
+				</div>
+				<div >
+					<form method="POST" class="frequency-form" action="/frequency">
+						<label for="language">Pick language:</label>
+						<select name="language" width="300px" id="language">
+							{% for language in language_frequency_list %}
+								<option name="{{ language}}">{{language}}</option>
+							{% endfor %}
+						</select>
+						<label for="min_word_length">Minimum word length:</label> <input type="number" name = "min_word_length" required="required" id="min_word_length">
+						<label for="number_frequency">How many words:</label> <input type="number" name = "number_frequency" required="required" id="number_frequency">
+						<input type="submit" value="submit" id="submitButton" class="button">
+					</form>
+				</div>
+				{% if frequency_output is defined %}
+				<div class="centered">
+					<table id="frequency-table">
+						<tr id="caption"><td colspan="2">Top {{ number_frequency }} words with atleast {{ min_word_length }} letters</td></tr>
+						<tr>
+							<th><p> in {{ language.title() }}</p></th>
+							<th><p> translated to English </p></th>
+						</tr>
+						{% set count = namespace(i=0) %}
+						{% for word in frequency_output %}
+						<tr>
+						<td><p>{{ frequency_output[count.i] }}</p></td>
+						<td><p>{{ frequency_output_english[count.i] }}</p></td>
+						{% set count.i = count.i + 1 %}
+						</tr>
+						{% endfor %}
+					</table>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="{{ url_for("static",filename="js/interactive.js")}}"></script>
+{% endblock content %}

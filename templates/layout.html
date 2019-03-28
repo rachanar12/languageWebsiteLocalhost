@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{{ url_for("static", filename="bootstrap-3.4.1-dist/css/bootstrap.css")}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/style.css")}}">
+	<script type="text/javascript" src="{{ url_for("static", filename="js/jquery-3.3.1.min.js")}}"></script>
+	<script sync src="https://platform.twitter.com/widgets.js"></script>
+	<script type="text/javascript" src="{{ url_for("static",filename="js/interactive.js")}}"></script>
+	{% block head %}
+	{% endblock head %}
+</head>
+<body>
+	<header>
+		{% block title %}
+		{% endblock title %}
+		<nav class="navbar">
+	        <div class="container-fluid">
+	          <div class="navbar-header">
+	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">Remedies for the Body  <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button>
+	          </div>
+	          <div class="collapse navbar-collapse" id="myNavbar">
+	            <ul class="nav navbar-nav">
+	              <li><a href="{{ url_for("welcome")}}">Home</a></li>
+	              <li><a href="{{ url_for("about")}}">About Us</a></li>
+	              <li><a href="{{ url_for("languagestatistics")}}">World Language Statistics</a></li>
+	              <li><a href="{{ url_for("twitterlanguagegame")}}">Twitter Language Game</a></li>
+	              <li><a href="{{ url_for("contact")}}">Contact Us</a></li>
+	            </ul>
+	          </div>
+	        </div>
+	    </nav>
+	</header>
+	{% block content%}
+	{% endblock content %}
+</body>
+</html>

@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+{% block head %}
+<title>Twitter Language Game</title>
+{% endblock head %}
+{% block title %}
+<h2>Pick a hashtag and a language to translate the tweet to!</h2>
+{% endblock title %}
+{% block content %}
+<div class="main-text">
+	{% if score is not defined %}
+	{% if hashtagError == true %}
+	<p> That hashtag was not found. Please try a different one </p>
+	{% endif %}
+	<div id="twitter-form">
+		<form method="POST" autocomplete="off" action="/languageGame">
+			<label for="hashtag">hashtag:</label> <input type="text" name="hashtag" required="required" id="hashtag">
+			<label for="language">Pick language:</label>
+			<select name="language" id="language">
+				{% for language in language_list %}
+					<option name="{{ language}}">{{language}}</option>
+				{% endfor %}
+			</select>
+			<label for="min_words">Number of words to practice:</label> <input type="number" name = "min_words" required="required" id="min_words">
+			<input type="submit" value="submit" id="submitButton" class="button">
+		</form>
+	</div>
+	{% endif %}
+	{%if score is defined %}
+		<div class="container">
+		<div class="row row-no-margin">
+			<div class="col-md-6">
+			<form method="POST" action ="/twitterlanguagegame">
+				<input type="submit" name="again" value="play again" class="button">
+			</form>
+			<p>
+			that is the end of the game <br><br> you got <bold>{{"{0:.0%}".format(score)}}</bold> correct. <br>
+			here's the tweet for you! <br>
+			</p>
+			</div>
+			<div class="col-md-6" id="tweet-display">
+				<div class="tweets" id = "tweet" tweetID="{{tweetID}}"></div>
+			</div>
+		</div>
+		</div>
+	{% endif %}
+	{% if search_hashtag|length %}
+	<p>
+	you choose the hashtag "{{ search_hashtag }}"
+	<br>
+	and the practice language "{{ dest_lang_full }}"
+	<br>
+	<br>
+	</p>
+	{% endif %}
+		{% if word|length %}
+		<div class="container">
+		<div class="row row-no-margin">
+			<div class="col-md-6">
+			<p>
+			what is "{{word}}" in {{dest_lang_full}} ?
+			<div id="guess-form">
+				<form method="POST" action="/langGameAnswer">
+					{% for word in guess %}
+						<input id="guess-label" type="radio" name="answer" value="{{word}}"><label id="guess" for="guess-label">{{word}}</label><br>
+					{% endfor %}
+					<input type="submit" id="submitButton2" value="submit" class="button">
+				</form>
+			</div>
+			</p>
+			</div>
+		{%endif %}
+			<div class="col-md-6">
+			<p>
+				{% if answer in guess and answer|length %}
+					{% if guess[answer][0]==1 %}
+						That's the right answer. Well done!
+					{% elif guess[answer][0]==0 %}
+						that's the wrong answer <br>
+						<i>"{{answer}}"</i> means <i>"{{ guess[answer][1] }}"</i><br>
+						the correct answer is <i>"{{ guess_reverse[1,word] }}"</i> <br>
+					{% endif %}
+			</p>
+			<form method="POST" action="/langGame">
+				<input type="submit" value="next" id="nextButton" class="button">
+			</form>
+			{% endif %} <!-- this is ending the if statement "if answer in guess and answer|length" -->
+			</div>
+		</div>
+</div>
+</div>
+{% endblock content %}

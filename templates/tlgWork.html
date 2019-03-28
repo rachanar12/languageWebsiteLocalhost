@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 	<link rel="stylesheet" href="./bootstrap-3.4.1-dist/css/bootstrap.css" >
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type=text/javascript>
+			$(("guess-form").submit(function(event) {
+				event.preventDefault();
+				$.getJSON('/langGame', {
+				  answer: $('input[name="answer"]').val(),
+				}, function(data) {
+				  $("#result").text(data.result);
+				});
+				return false;
+			  });
+		</script>
+	<title>Twitter Language Game</title>
+</head>
+<body>
+	<h2>Pick a hashtag and a language to translate the tweet to!</h2>
+	<div id="twitter-form">
+		<form method="POST" action="/languageGame">
+			hashtag: <input type="text" name="hashtag" required="required" id="hashtag">
+			Pick language: 
+			<select name="language" width="300px">
+				{% for language in language_list %}
+					<option name="{{ language}}">{{language}}</option>
+				{% endfor %}
+			</select>
+			Number of words to practice: <input type="number" name = "min_words" required="required" id="min_words">
+			<input type="submit" value="submit" id="submitButton">
+		</form>
+	</div>
+	<p> {% if search_hashtag|length %}
+		you choose the hashtag "{{ search_hashtag }}"
+		<br>
+		and the practice language "{{ dest_lang_full }}"
+		{% endif %}
+	</p>
+	<p>
+		{% if word|length %}
+		what is "{{word}}" in {{dest_lang_full}} ?
+		{%endif %}
+		<div id="guess-form">
+			<form>
+				{% for word in guess %}
+					<input type="radio" name="answer" value="{{word}}">{{word}} <br>
+				{% endfor %}
+				<input type="submit" value = "submit" name="submitButton" id="submitButton">
+			</form>
+		</div>
+	</p>
+	<p id="result"></p>
+	<p>
+		{% if answer in guess and answer|length %}
+			{% if guess[answer][0]==1 %}
+			That's the right answer. Well done!
+			{% elif guess[answer][0]==0 %}
+			that's the wrong answer <br>
+			{{answer}} means {{ guess[answer][1] }} <br>
+			the correct answer is {{ guess_reverse[1,word] }} <br>
+			{% endif %}
+		{% endif %}
+</body>
+</html>

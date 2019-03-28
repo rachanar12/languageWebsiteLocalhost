@@ -1,0 +1,281 @@
+  /*Header*/
+header {
+  /*background-image: url("../Images/backgroundtest.jpg");*/
+  background-size: cover;
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+  margin-top: 15px;
+  margin-bottom: -25px;
+  background-repeat: repeat-y;
+  float: center;
+}
+
+.title {
+    /*padding-top: 30px;*/
+    /*font-size: 80px;*/
+    font-weight: 100;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+/* Navbar */
+
+    .navbar {
+      margin-left: 0;
+      margin-right: 0;
+      float: none;
+      padding-top: 20px
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+/*centers navbar links */
+
+    .navbar .navbar-nav {
+        display: inline-block !important;
+        float: none !important;
+        vertical-align: middle !important;
+        margin-bottom: 20px;
+    }
+
+    .navbar .navbar-collapse {
+        text-align: center !important;
+    }
+
+/*mobile dropdown icon*/
+
+    .navbar-toggle {
+      float: none;
+      padding: 9px 10px;
+      margin-top: 8px;
+      margin-right: 15px;
+      margin-bottom: 8px;
+      background-color:rgba(109,80,89,.4);
+      background-image: none;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      color: black;
+      font-weight: bold;
+      margin-right: 0;
+      margin-left: 0;
+      font-size: 4px;
+    }
+
+/*navbar links */
+
+    .nav > li {
+      display: inline-block;
+      float: none;
+      margin: 0px 10px 0 10px;
+      font-size: 18px;
+      border: solid black 1.5px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .nav > li a {
+      color: black;
+      border-radius: 10px;
+    }
+
+/* responsive links */
+
+    .nav > li a:hover {
+      color:rgba(109,80,89,.9);
+      font-weight: bold;
+      background-color: rgba(255,255,255,0.4);
+    }
+
+    .navbar-nav > .not-active > a {
+      pointer-events: none;
+      cursor: default;
+      background-color:rgba(109,80,89,.4);
+    }
+
+body {
+	color: rgb(65,75,86);
+  font-family: Times;
+  margin-right: 50;
+}
+
+h1, h2 {
+  text-align: center;
+} 
+
+h1 {
+  font-size: 5em;
+}
+h2 {
+  font-size: 2.5em;
+}
+p {
+	font-family: Times;
+	font-size: 1.3em;
+}
+em {
+	color: #612b67;
+	font-weight: bold;
+}
+
+#brain {
+          align-content: left;
+          padding: 0 auto;
+          margin: 0 auto;
+          width: 100%;
+          height: 80vh;
+          position: relative;
+        }
+.no_text {
+	display: none;
+}
+div.instructions {
+	top: 180px;
+	right: 10px;
+	left: 100px;
+	padding: 30;
+    margin: 30;
+    position: absolute;
+    z-index: 2;
+}
+.textbox {
+	top: 50px;
+	right: 10px;
+	left: 100px;
+	position: absolute;
+	z-index: 3;
+}
+
+
+#tweet {
+  width: 600px !important;
+  height: 300px;
+}
+#tweet iframe {
+  border: none !important;
+  box-shadow: none !important;
+}
+div .about {
+  position: absolute;
+  top: 150px;
+}
+
+label {
+  font-family: Times;
+  font-size: 1.3em;
+  padding: 2px;
+}
+.button:hover{
+  background: #5B95C7;
+}
+.button {
+  padding-right: 10px;
+  margin: 10px;
+  background:#9353C9;
+  color: white;
+  font-size: 1.6em;
+  cursor: pointer;
+}
+#guess {
+  font-family: Times;
+  font-size: 1.3em;
+  padding: 2px;
+  font-weight: normal;
+}
+
+.main-text {
+  margin: 20px;
+}
+
+.embed-site {
+/*    width: 100% !important;
+    height: 50% !important;*/
+    width: 130%;
+    height: 350px;
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+/*#tweet {
+     width: 100%;
+    height: 350px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}*/
+
+.figure {
+  width: 180px;
+  height: 200px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  opacity:1;
+}
+
+.figure-label {
+    position: absolute;
+    margin-top:3px;
+    width: 180px;
+    height: 200px;
+    color: white;
+    font: Times;
+    visibility: hidden;
+    display: flex;
+    opacity: 1;
+    z-index:2;
+    align-items: center;
+    text-align: center;
+    background-color: black;
+}
+
+.box p {
+    line-height: 1em;
+    margin: 0;
+    padding: 0;
+  }
+
+table#frequency-table {
+  float: none;
+  display: inline-block;
+  align-items: center;
+  text-align: center;
+  border-spacing: 5px ;
+}
+
+th, td {
+  border-style: solid;
+  border-color: black;
+  margin: 1px;
+  padding: 1px;
+}
+
+.centered {
+  text-align: center;
+}
+
+#caption td {
+  font-size: 1.5em;
+  font-weight: normal;
+  color: purple;
+  border-color: white;
+  border-bottom-color: black;
+}
+select, input{
+  font-size: 1.3em;
+}
+
+select{
+  width: 185px;
+  height: 30px;
+  display: inline-block;
+}
+
+.frequency-form label{
+  display: inline-block;
+  width: 13em;
+  vertical-align: top;
+}
+.frequency-form input{
+  vertical-align: top;
+}

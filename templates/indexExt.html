@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block head %}
+	<title>Benefits of learning a Language</title>
+{% endblock head %}
+{% block title %}
+<h2 class="title">How Language learning affects your brain </h2>
+{% endblock title %}
+{% block content %}
+	<div class="container">
+	<div class="row row-no-margin">
+		<div class="col-md-6" >
+			<object id ="brain" type="image/svg+xml" data="{{ url_for("static", filename="brainImage.svg")}}"></object>
+		</div>
+		<div class="col-md-6" id="textboxes">
+			<div id="textboxes-background">
+				<div class="textbox instructions">
+					<p> Hover over lobes of the brain to find out how language learning affects it </p>
+					<p> The information will be presented here </p>
+				</div>
+				<div class="textbox no_text" id="frontalText">
+					<h3> Increased Attention and Concentration</h3>
+					<p> Learning another language improves <em>Executive functions</em> of the brain.</p>
+					<p> These are tasks involved with your ability to control, direct and manage your attention, as well as your ability to plan. It also helps you ignore irrelevant information and focus on what's important.</p>
+					<br>
+					<h3> Helps avoid Distractions </h3>
+					<p>The brain areas responsible for the executive functions are also used when you’re trying to complete a task while there are distractions.</p>
+				</div>
+				<div class="textbox no_text" id="temporalText">
+					<h3>Delay illness like Alzheimer's and Dementia</h3>
+					<p>Although learning a language may not totally halt the onset of Alzheimer's and other forms of dementia in susceptible individuals, it can fend it off for up to five years. This is much more effective than any currently prescribed drug.</p>
+				</div>
+				<div class="textbox no_text" id="parietalText">
+					<h3> Denser Grey Matter</h3>
+					<p>Multilingual individuals have a greater density of grey matter. </p>
+					<p>This increases the brain's plasticity and ability to grasp new information. </p>
+					<br>
+					<h3>Increases Cognition</h3>
+					<p>Multilinguals have sharper cognitive skills and keep their brain alert and active even when only one language is used</p>
+				</div>
+				<div class="textbox no_text" id="occipitalText">
+					<h3>Easier to learn New Languages</h3>
+					<p>Once your brain has been trained to spot patterns involved in learning a new language, it makes it much easier for it to spot the patterns in the future.</p>
+					<p>Learning a language focuses on grammar and structures, making multilinguals more aware of language overall. This makes them more effective communicators, editors and writers.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}
